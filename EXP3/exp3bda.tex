@@ -1,0 +1,122 @@
+\documentclass[11pt,article]{memoir}
+\usepackage{multirow}
+\usepackage{agd-assignment}
+\usepackage{fancybox}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{standalone}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+
+\usepackage{listings}
+\lstset{
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\let\footruleskip\undefined
+\usepackage{fancyhdr}
+\fancyhf{}
+\lhead{\textbf{FRCRCE}}
+\rhead{\textbf{DEPARTMENT OF INFORMATION TECHNOLOGY}}
+
+\rfoot{Compiled on \today\ at \currenttime \quad \textbf{\thepage}}
+%\pagestyle{fancy}
+\assigncourse{Course title: Big Data Analytics}
+\assignterm{Course term: 2016-2017}
+\assigncat{Practical}
+%\assigntitle{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}}
+\lfoot{\textbf{Course title: Big Data Analytics}}
+
+\fancypagestyle{plain}{}
+\pagestyle{fancy}
+\begin{document}
+\sloppy
+\fancypage{\doublebox}{}
+\begin{flushleft}
+
+
+    \begin{tabular}{ | p{4cm} | p{5cm} | p{3.5cm} | p{2cm} |}
+    \hline
+
+    \textbf{Name of the student:}& &\textbf{Roll No.} & \\ \hline
+    \textbf{Practical Number:}& 3 & \textbf{Date of Practical:} & \\ \hline
+	\textbf{Relevant CO's} & \multicolumn{3}{|p{10.5cm}|}{\begin{flushleft}
+	\textbf{At the end of the course students will be able to use tools like hadoop and NoSQL to solve big data related problems.}
+	\end{flushleft}}\\
+    \hline
+    \multicolumn{3}{|p{12.5cm}|}{\textbf{Sign here to indicate that you have read all the relevant material provided before attempting this practical}}& \textbf{Sign:}\\ \hline
+    \end{tabular}
+    \vspace{1cm}
+        \textbf{Practical grading using Rubrics}
+           \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+           \hline \textbf{Indicator} & \textbf{Very Poor} & \textbf{Poor} & \textbf{Average} & \textbf{Good} & \textbf{Excellent} \\ 
+           \hline \textbf{Timeline} (2) & Practical not submitted (0) & More than two session late (0.5) & Two sessions late (1) & One session late (1.5) & Early or on time (2) \\ 
+           \hline \textbf{Code design} (3) & N/A & Very poor code design(0) & poor design (1) & design with good coding standards (2) & Accurate Design with better coding standards(3) \\ 
+           \hline \textbf{Execution} (3) & N/A & Very less execution (0)
+            & little execution.(1) & Major execution(2)
+            & Entire code execution (3) \\ 
+           \hline \textbf{Postlab} (2) & No Execution(0) & N/A& Partially Executed (1) & N/A & Fully Executed (2) \\ 
+           \hline 
+           \end{tabular}
+        \vspace{-8cm}
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{|c|c|}
+                \hline \textbf{Total Marks (10)} & \textbf{Sign of instructor} \\ 
+                \hline  &  \\ 
+                \hline 
+                \end{tabular} 
+        \end{table}
+        
+    \pagebreak
+
+	%\input{assignment}
+
+\maketitle
+
+%\thispagestyle{empty}
+\hrule \vspace{0.2cm}
+\textbf{Problem Statement: Find year-wise maximum temperature from the given dataset using map-reduce.}\hrule\vspace{0.2cm}
+\textbf{Theory:Explain the working of finding maximum temperature using map reduce with small example and diagrams}\hrule\vspace{0.2cm}
+\afterpage{\newpage~\newpage}\newpage
+\textbf{Code:}\hrule
+\vspace{0.5cm}
+\textbf{\underline{code for mapper:}}
+
+% Write code of mapper here
+\begin{lstlisting}[language=java]
+
+	
+\end{lstlisting}
+\textbf{\underline{Code for Reducer:}}
+\begin{lstlisting}[language=java]
+
+
+
+
+
+\end{lstlisting}
+% Write code for reducer here
+\textbf{\underline{Code for Driver Class:}}
+\begin{lstlisting}[language=java]
+
+
+
+
+
+\end{lstlisting}
+\newpage
+\textbf{PostLab:}\hrule
+Can we use combiner function in the above code? If yes, write the above code with combiner function.
+\textbf{\underline{Code for postlab question}}                        
+                          
+\newpage
+
+\end{flushleft}
+\end{document}
+
+\end{flushleft}
+\end{document}

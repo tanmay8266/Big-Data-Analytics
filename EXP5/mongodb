@@ -1,0 +1,27 @@
+0) mongo
+
+0) use mydb
+
+0) db.createCollection("media")
+
+1) db.media.insertMany([
+... { Type: "Book", Title: "Def.guide", ISBN: "978-1-482-0", Publisher: "Apress", Author: ["Hows,David","Plugge,Eelco","Membrey,Peter","Hawkins,Tim"]},
+... { Type: "Book", Title: "A text book on automata theory", ISBN: "978-2-482-0", Publisher: "Foundation books", Author: ["Nasir,S.F.B","Srimani,P.K"]},
+... { Type: "Book", Title: "MongodDB in Action", ISBN: "978-3-482-0", Publisher: "Manning Publication", Author: ["Banker,Kyle"]},
+... { Type: "Book", Title: "NoSQL for dummies", ISBN: "978-4-482-0", Publisher: "Wiley", Author: ["Fowler,Adam"]},
+... { Type: "Book", Title: "Big Data Analytics", ISBN: "978-5-482-0", Publisher: "Wiley", Author: ["Shankarmani,Radha"]}
+... ])
+
+2)db.media.insertOne({ Type: "CD", Artist : "Nirvana", Title: "Never Mind", Tracklist : [{ Track: 1,Title: "Smells like Teen Spirit", length: "5:02"}, { Track: 2, Title: "In Bloom", length: "4:15" }]})
+
+3)db.media.find( {} )
+
+4)db.media.find({Publisher:"Wiley"})
+
+5)db.media.find({Artist:"Nirvana",Type:"CD"},{Title:1,_id:0})
+
+6)db.media.find({}).sort({Title:-1})
+
+7)db.media.find({Type:"Book"}).limit(3)
+
+8)db.media.find().skip(db.media.count() - 3)

@@ -1,0 +1,192 @@
+\documentclass[11pt,article]{memoir}
+\usepackage{multirow}
+\usepackage{agd-assignment}
+\usepackage{fancybox}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{standalone}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+
+\usepackage{listings}
+\lstset{
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\let\footruleskip\undefined
+\usepackage{fancyhdr}
+\fancyhf{}
+\lhead{\textbf{FRCRCE}}
+\rhead{\textbf{DEPARTMENT OF INFORMATION TECHNOLOGY}}
+
+\rfoot{Compiled on \today\ at \currenttime \quad \textbf{\thepage}}
+%\pagestyle{fancy}
+\assigncourse{Course title: Big Data Analytics}
+\assignterm{Course term: 2019-2020}
+\assigncat{Practical}
+%\assigntitle{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}}
+\lfoot{\textbf{Course title: Big Data Analytics}}
+
+\fancypagestyle{plain}{}
+\pagestyle{fancy}
+\begin{document}
+\sloppy
+\fancypage{\doublebox}{}
+\begin{flushleft}
+
+
+    \begin{tabular}{ | p{4cm} | p{5cm} | p{3.5cm} | p{2cm} |}
+    \hline
+
+    \textbf{Name of the student:}& &\textbf{Roll No.} & \\ \hline
+    \textbf{Practical Number:}& 5 & \textbf{Date of Practical:} & \\ \hline
+	\textbf{Relevant CO's} & \multicolumn{3}{|p{10.5cm}|}{\begin{flushleft}
+	\textbf{At the end of the course students will be able to use tools like hadoop and NoSQL to solve big data related problems.}
+	\end{flushleft}}\\
+    \hline
+    \multicolumn{3}{|p{12.5cm}|}{\textbf{Sign here to indicate that you have read all the relevant material provided before attempting this practical}}& \textbf{Sign:}\\ \hline
+    \end{tabular}
+    \vspace{1cm}
+        \textbf{Practical grading using Rubrics}
+           \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+                             \hline \textbf{Indicator} & \textbf{Very Poor} & \textbf{Poor} & \textbf{Average} & \textbf{Good} & \textbf{Excellent} \\ 
+                             \hline \textbf{Timeline} (2) & More than a session late (0) & NA  & NA  & NA  & Early or on time (2) \\ 
+                             \hline \textbf{Code design} (2) & N/A & Very poor code design with no comments and indentation(0.5) & Poor code design with very comments and indentation
+                             (1) & Design with good coding standards (1.5) & Accurate design with better coding satndards (2) \\ 
+                             \hline \textbf{Performance} (4) & Unable to
+                             perform the
+                             experiment
+                             (0) & Able to
+                             partially
+                             perform the
+                             experiment
+                             (1)
+                              & Able to
+                              perform the
+                              experiment
+                              for certain use
+                              cases (2) & Able to
+                              perform the
+                              experiment
+                              considering
+                              most of the
+                              use cases (3)
+                              & Able to
+                              perform the
+                              experiment
+                              considering
+                              all use cases
+                              (4) \\ 
+                             \hline \textbf{Postlab} (2) & No Execution(0) & N/A & Partially Executed (1) & N/A & Fully Executed (2) \\ 
+                             \hline 
+                             \end{tabular}
+       % \vspace{-8cm}
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{|c|c|}
+                \hline \textbf{Total Marks (10)} & \textbf{Sign of instructor with date} \\ 
+                \hline  &  \\ & \\
+                \hline 
+                \end{tabular} 
+        \end{table}
+        
+    \pagebreak
+
+	%\input{assignment}
+
+\maketitle
+
+%\thispagestyle{empty}
+\hrule \vspace{0.2cm}
+\textbf{Problem Statement: Perform CRUD operations in MongoDB}\hrule\vspace{0.2cm}
+\textbf{Theory:Explain different CRUD Operations}\hrule\vspace{0.2cm}
+\afterpage{\newpage~\newpage}\newpage
+\textbf{Code:}\hrule
+\vspace{0.5cm}
+\textbf{\underline{Code of CRUD operations in MongoDB}}
+\begin{enumerate}
+\item Create documents for following data in collection called media.
+
+\begin{table}[h]
+
+
+\begin{tabular}{|p{1.5cm}|p{2cm}|p{2.0cm}|p{1.5cm}|p{6.5cm}|}
+\hline \textbf{Type} & \textbf{Title} & \textbf{ISBN} & \textbf{Publisher} & \textbf{Author} \\ 
+\hline Book & Def. guide & 978-1-482-0 & Apress & "Hows, David","Plugge,
+Eelco","Membrey, Peter","Hawkins, Tim" \\ 
+\hline Book & A text book on automata theory & 978-2-482-0 & Foundation books & "Nasir, S.F.B","Srimani,P.K" \\
+\hline Book & MongoDB in Action & 978-3-482-0 & Manning Publication & "Banker, Kyle"\\
+\hline Book & NoSQL for dummies & 978-4-482-0 & Wiley & "Fowler, Adam"\\
+\hline Book & Big Data Analytics & 978-5-482-0 & Wiley & "Shankarmani, Radha"\\
+\hline 
+\end{tabular} 
+\end{table}
+\textbf{\underline{code for creating documents:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Insert a document with type=CD, Artist=Nirvana, Title=Never Mind, Tracklist=[{Track:1,Title:Smells Like Teen Spirit,length:5:02},{Track:2,Title:In Bloom,length:4:15}] in same collection named media.\\
+\textbf{\underline{code for creating document:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find all documents in collection named media.
+
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find documents where publisher is Wiley
+\\
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find titles of CDs whose artist is Nirvana.
+\\
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find all documents sorted in descending order.
+\\
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find only 3 documents of book type.
+\\
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\item Find last 3 documents from collection named media.
+\\
+\textbf{\underline{Query Code:}}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{enumerate}
+
+\newpage
+\textbf{PostLab:}\hrule
+Compute customerwise total amount on given dataset using map reduce for the customers with status as "A" and store this result in a document called Order\_total.\\
+\textbf{\underline{code for mapreduce function of MongoDB}}
+\begin{lstlisting}
+
+	
+\end{lstlisting}
+Calculate number of times the site has been visited using mapreduce in MongoDB on given dataset.
+\textbf{\underline{Code for the question}}
+\begin{lstlisting}
+
+	
+\end{lstlisting}
+\newpage
+
+\end{flushleft}
+\end{document}
+

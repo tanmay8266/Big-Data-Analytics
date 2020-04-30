@@ -1,0 +1,149 @@
+\documentclass[11pt,article]{memoir}
+\usepackage{multirow}
+\usepackage{agd-assignment}
+\usepackage{fancybox}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{standalone}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+
+\usepackage{listings}
+\lstset{
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\let\footruleskip\undefined
+\usepackage{fancyhdr}
+\fancyhf{}
+\lhead{\textbf{FRCRCE}}
+\rhead{\textbf{DEPARTMENT OF INFORMATION TECHNOLOGY}}
+
+\rfoot{Compiled on \today\ at \currenttime \quad \textbf{\thepage}}
+%\pagestyle{fancy}
+\assigncourse{Course title: Big Data Analytics}
+\assigninstructor{Instructor name: Saurabh Kulkarni}
+\assignterm{Course term: 2019-2020}
+\assigncat{Practical}
+%\assigntitle{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}}
+\lfoot{\textbf{Course title: Big Data Analytics}}
+
+\fancypagestyle{plain}{}
+\pagestyle{fancy}
+\begin{document}
+\sloppy
+\fancypage{\doublebox}{}
+\begin{flushleft}
+
+
+    \begin{tabular}{ | p{4cm} | p{5cm} | p{3.5cm} | p{2cm} |}
+    \hline
+
+    \textbf{Name of the student:}& &\textbf{Roll No.} & \\ \hline
+    \textbf{Practical Number:}& 4 & \textbf{Date of Practical:} & \\ \hline
+	\textbf{Relevant CO's} & \multicolumn{3}{|p{10.5cm}|}{\begin{flushleft}
+	\textbf{At the end of the course students will be able to use tools like hadoop and NoSQL to solve big data related problems.}
+	\end{flushleft}}\\
+    \hline
+    \multicolumn{3}{|p{12.5cm}|}{\textbf{Sign here to indicate that you have read all the relevant material provided before attempting this practical}}& \textbf{Sign:}\\ \hline
+    \end{tabular}
+    \vspace{1cm}
+        \textbf{Practical grading using Rubrics}
+                  \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+                  \hline \textbf{Indicator} & \textbf{Very Poor} & \textbf{Poor} & \textbf{Average} & \textbf{Good} & \textbf{Excellent} \\ 
+                  \hline \textbf{Timeline} (2) & More than a session late (0) & NA  & NA & NA  & Early or on time (2) \\ 
+                  \hline \textbf{Code design} (2) & N/A & Very poor code design with no comments and indentation(0.5) & Poor code design with very comments and indentation
+                  (1) & Design with good coding standards (1.5) & Accurate design with better coding satndards (2) \\ 
+                  \hline \textbf{Performance} (4) & Unable to
+                  perform the
+                  experiment
+                  (0) & Able to
+                  partially
+                  perform the
+                  experiment
+                  (1)
+                   & Able to
+                   perform the
+                   experiment
+                   for certain use
+                   cases (2) & Able to
+                   perform the
+                   experiment
+                   considering
+                   most of the
+                   use cases (3)
+                   & Able to
+                   perform the
+                   experiment
+                   considering
+                   all use cases
+                   (4) \\ 
+                  \hline \textbf{Postlab} (2) & No Execution(0) & N/A & Partially Executed (1) & N/A & Fully Executed (2) \\ 
+                  \hline 
+                  \end{tabular}
+        %\vspace{-8cm}
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+                \hline \textbf{Total Marks (10)} & \textbf{Sign of instructor with date} \\ 
+                \hline  &  \\ & \\
+                \hline 
+                \end{tabular} 
+        \end{table}
+        
+    \pagebreak
+
+	%\input{assignment}
+
+\maketitle
+
+%\thispagestyle{empty}
+\hrule \vspace{0.2cm}
+\textbf{Problem Statement: Perform matrix multiplication using one step map-reduce}\hrule\vspace{0.2cm}
+\textbf{Theory:Explain the concept of matrix multiplication using one step map-reduce with the help of an example}\hrule\vspace{0.2cm}
+\afterpage{\newpage~\newpage}\newpage
+\textbf{Code:}\hrule
+\vspace{0.5cm}
+\textbf{\underline{code for mapper:}}
+
+% Write code of mapper here
+\begin{lstlisting}[language=java]
+
+	
+\end{lstlisting}
+\textbf{\underline{Code for Reducer:}}
+\begin{lstlisting}[language=java]
+
+
+
+
+
+\end{lstlisting}
+% Write code for reducer here
+\textbf{\underline{Code for Driver Class:}}
+\begin{lstlisting}[language=java]
+
+
+
+
+
+\end{lstlisting}
+\newpage
+\textbf{PostLab:}\hrule
+\begin{enumerate}
+\item Generate a 100x100 matrix in the format that above map-reduce code understands using suitable programming language
+\item Compute execution time for a 100x100 matrix using suitable APIs
+\end{enumerate}
+\textbf{\underline{Code for postlab question}}                        
+                          
+\newpage
+
+\end{flushleft}
+\end{document}
+
+\end{flushleft}
+\end{document}

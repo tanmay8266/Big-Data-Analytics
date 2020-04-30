@@ -1,0 +1,20 @@
+1) mongoimport --jsonArray --db mydb --collection postlab --file "/media/tanmay/Data/SEM-8/BDA/EXP5/MongoMapreducedata"
+
+2)MongoDB Enterprise > var f1 = function(){
+... emit(this.cust_id,this.price);
+... };
+
+3)MongoDB Enterprise > var reduce = function(CustId, Prices){
+... return Array.sum(Prices);
+... };
+
+4)MongoDB Enterprise > db.postlab.mapReduce(
+... f1,
+... reduce,
+... {query:{status:"A"},out:"map_reduce_postlab"}
+... )
+
+5)db.map_reduce_postlab.find({})
+o/p: 
+{ "_id" : "A123", "value" : 750 }
+{ "_id" : "B212", "value" : 200 }

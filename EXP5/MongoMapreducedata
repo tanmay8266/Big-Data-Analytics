@@ -1,0 +1,20 @@
+
+[
+{
+
+    "cust_id" : "A123","amount" : 500,"status" : "A"
+},
+{
+
+    "cust_id" : "A123","amount" : 250,"status" : "A"
+},
+{
+
+    "cust_id" : "B212","amount" : 200,"status" : "A"
+},
+{
+
+    "cust_id" : "A123","amount" : 300,"status" : "D"
+}
+]
+

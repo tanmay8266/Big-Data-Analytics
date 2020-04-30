@@ -1,0 +1,53 @@
+﻿
+
+    • DisCo is a distributed co-clustering algorithm with MapReduce. 
+    • Given a data matrix, coclustering groups the rows and columns so that the resulting permuted matrix has concentrated nonzero elements. 
+    • For example, co-clustering on a documents-to-words matrix finds document groups as well as word groups. 
+    • For an m×n input matrix, co-clustering outputs the row and column labeling vector r ∈ {1,2,..., k}^m and c ∈ {1,2,...,l}^n , respectively, and k ×l group matrix G where k and l are the number of desired row and column partitions, respectively. 
+    • Searching for an optimal cluster is NP-hard [12], and thus co-clustering algorithms perform a local search. In the local search, each row is iterated to be assigned to the best group that gives the minimum cost while the column group assignments are fixed. 
+    • Then in the same fashion each column is iterated while the row group assignments are fixed. This process continues until the cost function stops decreasing. 
+    • There are two important observations that affect the design of the distributed co-clustering algorithm on MapReduce:
+        ◦ The numbers k and l are typically small, and thus the k ×l matrix G is small. Also, the row and the column labeling vectors r and c can fit in the memory.
+        ◦ For each row (or column), finding the best group assignment requires only r, c, and G. It does not require other rows.
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A bag-of-words model, or BoW for short, is a way of extracting features from text for use in modeling, such as with machine learning algorithms.
+
+The approach is very simple and flexible, and can be used in a myriad of ways for extracting features from documents.
+
+A bag-of-words is a representation of text that describes the occurrence of words within a document. It involves two things:
+
+A vocabulary of known words.
+A measure of the presence of known words.
+
+It is called a “bag” of words, because any information about the order or structure of words in the document is discarded. The model is only concerned with whether known words occur in the document, not where in the document.
+
+In this approach, we look at the histogram of the words within the text, i.e. considering each word count as a feature.
+
+The algoithm goes like follows:
+1) Collect the data as input for algorithm
+2) Design the vocabulary tokenization followed by removing punctuation and ignoring the case
+3) Creating Document Vectors: The objective is to turn each document of free text into a vector that we can use as input or output for a machine learning model. The simplest scoring method is to mark the presence of words as a boolean value, 0 for absent, 1 for present.
+4) Managing Vocabulary : Removing Stop Words and Stemming
+5) Scoring Words: Once a vocabulary has been chosen, the occurrence of words in example documents needs to be scored.
+Counts: Count the number of times each word appears in a document.
+Frequencies: Calculate the frequency that each word appears in a document out of all the words in the document.
+6) Word Hashing : Words are hashed deterministically to the same integer index in the target hash space. A binary score or count can then be used to score the word.
+7) TF-IDF : A problem with scoring word frequency is that highly frequent words start to dominate in the document (e.g. larger score), but may not contain as much “informational content” to the model as rarer but perhaps domain specific words.
+
+One approach is to rescale the frequency of words by how often they appear in all documents, so that the scores for frequent words like “the” that are also frequent across all documents are penalized.
+
+This approach to scoring is called Term Frequency – Inverse Document Frequency, or TF-IDF for short, where:
+
+Term Frequency: is a scoring of the frequency of the word in the current document.
+Inverse Document Frequency: is a scoring of how rare the word is across documents.
+
+The scores are a weighting where not all words are equally as important or interesting.
+
+
+
+
+
+
+
+

@@ -1,0 +1,329 @@
+\documentclass[11pt,article]{memoir}
+\usepackage{multirow}
+\usepackage{agd-assignment}
+\usepackage{fancybox}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{standalone}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+
+\usepackage{listings}
+\lstset{
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\let\footruleskip\undefined
+\usepackage{fancyhdr}
+\fancyhf{}
+\lhead{\textbf{FRCRCE}}
+\rhead{\textbf{DEPARTMENT OF INFORMATION TECHNOLOGY}}
+
+\rfoot{Compiled on \today\ at \currenttime \quad \textbf{\thepage}}
+%\pagestyle{fancy}
+\assigncourse{Course title: Big Data Analytics}
+
+\assignterm{Course term: 2016-2017}
+\assigncat{Practical}
+%\assigntitle{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}}
+\lfoot{\textbf{Course title: Big Data Analytics}}
+
+\fancypagestyle{plain}{}
+\pagestyle{fancy}
+
+
+
+\begin{document}
+\sloppy
+\fancypage{\doublebox}{}
+\begin{flushleft}
+
+
+    \begin{tabular}{ | p{4cm} | p{5cm} | p{3.5cm} | p{2cm} |}
+    \hline
+
+    \textbf{Name of the student:}& &\textbf{Roll No.} & \\ \hline
+    \textbf{Practical Number:}& & \textbf{Date of Practical:} & \\ \hline
+	\textbf{Relevant CO's} & \multicolumn{3}{|p{10.5cm}|}{\begin{flushleft}
+	\textbf{At the end of the course students will be able to use tools like hadoop and NoSQL to solve big data related problems.}
+	\end{flushleft}}\\
+    \hline
+    \multicolumn{3}{|p{12.5cm}|}{\textbf{Sign here to indicate that you have read all the relevant material provided before attempting this practical}}& \textbf{Sign:}\\ \hline
+    \end{tabular}
+    \vspace{1cm}
+        \textbf{Practical grading using Rubrics}
+           \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+           \hline \textbf{Indicator} & \textbf{Very Poor} & \textbf{Poor} & \textbf{Average} & \textbf{Good} & \textbf{Excellent} \\ 
+           \hline \textbf{Timeline} (2) & Practical not submitted (0) & More than two session late (0.5) & Two sessions late (1) & One session late (1.5) & Early or on time (2) \\ 
+           \hline \textbf{Code design} (3) & N/A & Very poor code design(0) & poor design (1) & design with good coding standards (2) & Accurate Design with better coding standards(3) \\ 
+           \hline \textbf{Execution} (3) & N/A & Very less execution (0)
+            & little execution.(1) & Major execution(2)
+            & Entire code execution (3) \\ 
+           \hline \textbf{Postlab} (2) & No Execution(0) & N/A& Partially Executed (1) & N/A & Fully Executed (2) \\ 
+           \hline 
+           \end{tabular}
+        \vspace{-8cm}
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{|c|c|}
+                \hline \textbf{Total Marks (10)} & \textbf{Sign of instructor} \\ 
+                \hline  &  \\ 
+                \hline 
+                \end{tabular} 
+        \end{table}
+        
+    \pagebreak
+
+	%\input{assignment}
+
+\maketitle
+
+%\thispagestyle{empty}
+\hrule \vspace{0.2cm}
+\textbf{Problem Statement: Counting number of words in given text file using map reduce.}\hrule\vspace{0.2cm}
+\textbf{Theory:Explain the working of word count using map reduce with small example and diagrams}\hrule\vspace{0.2cm}
+\afterpage{\newpage~\newpage}\newpage
+\textbf{Code:}\hrule
+\vspace{0.5cm}
+\textbf{\underline{code for mapper:}}
+
+% Write code of mapper here
+\begin{lstlisting}[language=java]
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
+
+public class WCMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+// Create object of type Text to hold strings created per word of given document
+private Text word = new Text();
+
+// Create final static variable of type IntWritable with value equal to 1 as according to algorithm map function puts 1 for each word encountered.
+private final static IntWritable one = new IntWritable(1);
+
+//write a map function here
+public void map(LongWritable ikey, Text ivalue, Context context)
+throws IOException, InterruptedException {
+//Define a String type variable and assign value which is equal to string equivalent of Text value passed to map function
+String line = ivalue.toString();
+//Convert this variable to tokens using StringTokenizer class as it separates out each word of the document
+StringTokenizer tokenizer = new StringTokenizer(line);
+//Until there are tokens in StringTokenizer, 
+while(tokenizer.hasMoreTokens()) 
+{
+// set the Text object created in first line of the code in WCMapper to next token in the StringTokenizer
+word.set(tokenizer.nextToken());
+// Write this Text Variable and final static IntWritable Variable created to the context so that key-value pairs are generated.
+context.write(word, one);
+}
+}
+}
+	
+\end{lstlisting}
+\textbf{\underline{Code for Reducer:}}
+\begin{lstlisting}[language=java]
+import java.io.IOException;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Reducer.Context;
+
+
+public class WCReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+
+public void reduce(Text key, Iterable<IntWritable> values, Context context)
+throws IOException, InterruptedException {
+// process values
+//initialize sum=0
+int sum = 0;
+
+//Iterate over the collection of values to get count of each word i.e. key 
+for(IntWritable val:values)
+{
+sum+=val.get();
+}
+//Write this count to the context. 
+context.write(key,new IntWritable(sum));
+
+}
+}
+
+
+\end{lstlisting}
+% Write code for reducer here
+\textbf{\underline{Code for Driver Class:}}
+\begin{lstlisting}[language=java]
+import java.io.IOException;
+import java.util.Date;
+import java.util.Formatter;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.util.GenericOptionsParser;
+import org.apache.hadoop.mapreduce.*;
+
+public class WCDriver {
+
+public static void main(String[] args) throws Exception {
+Configuration conf = new Configuration();
+GenericOptionsParser parser = new GenericOptionsParser(conf, args);
+args = parser.getRemainingArgs();
+
+//Job job = new Job(conf, "wordcount");
+Job job=new Job(conf,"wordcount");
+job.setJarByClass(WCDriver.class);
+
+//job.setOutputKeyClass(Text.class);
+// job.setOutputValueClass(IntWritable.class);
+
+job.setMapOutputKeyClass(Text.class);
+job.setMapOutputValueClass(IntWritable.class);
+
+job.setInputFormatClass(TextInputFormat.class);
+job.setOutputFormatClass(TextOutputFormat.class);
+
+Formatter formatter = new Formatter();
+String outpath = "Out"
++ formatter.format("%1$tm%1$td%1$tH%1$tM%1$tS", new Date());
+FileInputFormat.setInputPaths(job, new Path("/media/tanmay/Data/SEM-8/BDA/EXP2/testfiles"));
+FileOutputFormat.setOutputPath(job, new Path("/media/tanmay/Data/SEM-8/BDA/EXP2/output"));
+job.setMapperClass(WCMapper.class);
+job.setReducerClass(WCReducer.class);
+
+System.out.println(job.waitForCompletion(true));
+}
+
+}
+
+\end{lstlisting}
+\newpage
+\textbf{PostLab:Find inverted index}\hrule
+In this assignment you have to implement a simple map reduce job that builds an  inverted index on the set of input documents.  An inverted index maps each word to a list of documents that contain the word, and additionally records the position of each occurrence of the word within the document.  For the purpose of this assignment, the position will be based on counting words, not characters.
+\parskip=\baselineskip
+
+  Ex: Assume below are the input Documents.\\
+
+   file1={"data is good."}
+	\\
+   file2={"data is not good?"}
+\parskip=\baselineskip
+
+   Output: \\
+
+                 data {(file1,1)(file2,1)}
+\\
+                 good {(file1,3)(file2,4)}
+\\
+                  is  {(file1,2)(file2,2)}
+\\
+                  not {(file2,3)}
+                  \\
+For more details on inverted indices, you can check out the Wikipedia page on inverted indices.\\
+Now in this assignment you need to implement above map-reduce job.
+\\
+Input: A set of documents
+\parskip=\baselineskip
+
+Output:\\
+ Map: word1 (filename, position)\\
+ 
+                    word2 (filename, position)\\
+ 
+                    word1 (filename, position)\\
+ 
+          and so on for each occurrence of each word. \\
+          Reduce: word1 {(filename, position)(filename,position)}\\
+          
+                                 word2 {(filename, position)}\\
+          
+                   and so on for each word.\\
+                   
+                   Code for getting file name in Hadoop, which can be used in the Map function:
+                   \begin{lstlisting}[language=java]
+                    String filename=null;
+                    filename = ((FileSplit) context.getInputSplit()).getPath().getName();
+                   \end{lstlisting}
+\textbf{\underline{Code for postlab question}}
+\begin{lstlisting}[language=java]
+public static void main(String[] args) throws Exception {
+Configuration conf= new Configuration();
+Job job = new Job(conf,"UseCase1");
+job.setMapOutputKeyClass(Text.class);
+job.setMapOutputValueClass(Text.class);
+job.setJarByClass(InvertedIndex.class);
+job.setMapperClass(Map.class);
+job.setReducerClass(Reduce.class);
+
+job.setOutputKeyClass(Text.class);
+job.setOutputValueClass(Text.class);
+job.setInputFormatClass(TextInputFormat.class);
+job.setOutputFormatClass(TextOutputFormat.class);
+Path outputPath = new Path(args[1]);
+FileInputFormat.addInputPath(job, new Path(args[0]));
+FileOutputFormat.setOutputPath(job, outputPath);
+outputPath.getFileSystem(conf).delete(outputPath);
+
+System.exit(job.waitForCompletion(true) ? 0 : 1);
+}
+}
+
+public class Map extends Mapper<LongWritable,Text,Text,Text> {
+@Override
+public void map(LongWritable key, Text value, Context context)
+throws IOException,InterruptedException
+{
+/*Get the name of the file using context.getInputSplit()method*/
+String fileName = ((FileSplit) context.getInputSplit()).getPath().getName();
+String line=value.toString();
+//Split the line in words
+String words[]=line.split(" ");
+for(String s:words){
+//for each word emit word as key and file name as value
+context.write(new Text(s), new Text(fileName));
+}
+}
+}
+
+public static class Reduce extends
+Reducer<Text, Text, Text, Text> {
+@Override
+public void reduce(Text key, Iterable<Text> values, Context context)
+throws IOException, InterruptedException {
+HashMap m=new HashMap();
+int count=0;
+for(Text t:values){
+String str=t.toString();
+if(m!=null &&m.get(str)!=null){
+count=(int)m.get(str);
+m.put(str, ++count);
+}else{
+m.put(str, 1);
+}
+}
+context.write(key, new Text(m.toString()));
+}
+}
+
+\end{lstlisting}                   
+                          
+\newpage
+
+\end{flushleft}
+\end{document}
+
+\end{flushleft}
+\end{document}
