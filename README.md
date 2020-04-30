@@ -11,6 +11,8 @@ It also contains Mongodb installation and basic commands.
 Python implementation of Bloom Filter is also available now!
 
 Enjoy!
+### Author
+#### Tanmay Rane
 
 https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP1
 
