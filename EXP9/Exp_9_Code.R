@@ -1,5 +1,5 @@
 library(lsa)
-critics = read.csv("C:/Users/saurabh/Downloads/Movieratings.csv")
+critics = read.csv("/media/tanmay/Data/SEM-8/BDA/EXP9/Movieratings.csv")
 #calculate the euclidian distance 
 #EUD = dist(critics[,2:7])
 #cosine similarity calculation
@@ -7,7 +7,7 @@ x  = critics[,2:7]
 x[is.na(x)] = 0
 user_sim = cosine(as.matrix(t(x))) #user similarity
 #Recommending items
-#for Toby
+#for Toby   
 
 #create weightge matrix
 weight_mat = user_sim[,7]*critics[,2:7]
