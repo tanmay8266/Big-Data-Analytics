@@ -28,7 +28,11 @@ https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP6
 
 https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP7
 
+https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP8
+
 https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP9
+
+https://github.com/tanmay8266/Big-Data-Analytics/tree/master/EXP10
 
 https://github.com/tanmay8266/Big-Data-Analytics/tree/master/Assignment_1
 
